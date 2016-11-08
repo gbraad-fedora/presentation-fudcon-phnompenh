@@ -3,7 +3,7 @@ stages:
   - generate
   - publish
 
-convert:
+convert_slides:
   image: registry.gitlab.com/gbraad/libreoffice:latest
   stage: convert
   script:
@@ -15,9 +15,9 @@ convert:
   only:
     - master
 
-pages:
-  stage: generate
+generate_index:
   image: registry.gitlab.com/gbraad/docugen:latest
+  stage: generate
   script:
     - git clone https://gitlab.com/gbraad/document-generation-assets.git assets --depth 1
     - mkdir -p public

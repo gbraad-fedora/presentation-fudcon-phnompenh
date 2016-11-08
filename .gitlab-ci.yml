@@ -1,5 +1,6 @@
 stages:
   - convert
+  - generate
   - publish
 
 convert:
@@ -15,7 +16,7 @@ convert:
     - master
 
 pages:
-  stage: publish
+  stage: generate
   image: registry.gitlab.com/gbraad/docugen:latest
   script:
     - git clone https://gitlab.com/gbraad/document-generation-assets.git assets --depth 1
@@ -23,6 +24,15 @@ pages:
     - cp -r assets/public-content/reveal/* public/
     - pandoc -t html5 --template assets/templates/reveal-slides-template.html --standalone --section-divs ./index.md -o ./public/index.html
     - cp -r img public/
+  artifacts:
+    paths:
+      - public
+  only:
+    - master
+
+pages:
+  image: registry.gitlab.com/gbraad/docker:git
+  stage: publish
   artifacts:
     paths:
       - public

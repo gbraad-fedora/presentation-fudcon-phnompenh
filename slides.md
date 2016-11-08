@@ -1,6 +1,6 @@
 # Atomic
 
-### BYO
+### Usage and Build-your-own
 Gerard Braad
 
 <span class="lightblue">me</span><span class="white">@gbraad</span><span class="orange">.nl</span>
@@ -16,9 +16,54 @@ Gerard Braad
   * ...
 
 
+## What is Project Atomic
+
+  * Host
+  * Registry
+  * App (Nulecule)
+
+
+## Atomic Host
+
+  immutable infrastructure
+
+
+## Reason
+
+  * security
+  * reproducible
+
+
+## Components
+
+  * Fedora / CentOS base
+  * ostree
+    * rpm-ostree
+  * docker
+
+
+## How do applications run on the host
+
+  * containers
+
+
+## Customization
+
+  * BYO
+
+
+## Access node
+
+  * SSH
+    * Ansible
+
+
 ## Resources
 
-  * http://gbraad.nl
+  * http://projectatomic.io
+  * http://projectatomic.io/community
+  * http://github.com/projectatomic
+  * 
 
 
 ## Stay in touch

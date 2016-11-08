@@ -2,6 +2,14 @@ FUDCon Phnom Penh: Atomic - BYO
 ===============================
 
 
+Introduction to Project Atomic, Atomic Host, and customization.
+
+
+Online material used during the presentation:
+
+  * [Demo use-case](http://gbraad.nl/blog/setting-up-a-powerful-self-hosted-ide-in-the-cloud.html)
+  * [Customization](http://gbraad.nl/blog/deployment-of-ceph-using-custom-atomic-images.html)
+
 
 Author and contributors
 -----------------------

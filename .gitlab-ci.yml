@@ -1,16 +1,30 @@
+stages:
+  - convert
+  - publish
+
+convert:
+  image: registry.gitlab.com/gbraad/libreoffice:latest
+  stage: convert
+  script:
+    - mkdir -p public
+    - libreoffice --headless --convert-to pdf --outdir public slides.odp
+  artifacts:
+    paths:
+      - public
+  only:
+    - master
+
 pages:
+  stage: publish
   image: registry.gitlab.com/gbraad/docugen:latest
   script:
     - git clone https://gitlab.com/gbraad/document-generation-assets.git assets --depth 1
-    - mkdir public
+    - mkdir -p public
     - cp -r assets/public-content/reveal/* public/
     - pandoc -t html5 --template assets/templates/reveal-slides-template.html --standalone --section-divs ./index.md -o ./public/index.html
-    - pandoc -t html5 --template assets/templates/reveal-slides-template.html --standalone --section-divs ./slides.md -o ./public/slides.html
-    - pandoc -V geometry:margin=1in ./slides.md -o ./public/handout.pdf
-    - phantomjs ./assets/scripts/topdf.js ./public/slides.html ./public/slides.pdf 0.7
     - cp -r img public/
   artifacts:
     paths:
-    - public
+      - public
   only:
-  - master
+    - master

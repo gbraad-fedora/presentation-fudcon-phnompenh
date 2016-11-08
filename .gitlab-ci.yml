@@ -8,6 +8,7 @@ convert_slides:
   stage: convert
   script:
     - mkdir -p public
+    - cp slides.odp public
     - libreoffice --headless --convert-to pdf --outdir public slides.odp
   artifacts:
     paths:
